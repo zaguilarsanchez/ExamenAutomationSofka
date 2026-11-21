@@ -1,0 +1,48 @@
+====================================================================
+PROYECTO DE AUTOMATIZACION E2E - FLUJO DE COMPRA (OPENCART)
+====================================================================
+
+1. DESCRIPCION
+Prueba automatizada End-to-End (E2E) del flujo de compra como invitado
+("Guest Checkout") en OpenCart, implementada en C#, .NET, Selenium
+WebDriver y xUnit bajo el patron Page Object Model (POM).
+
+2. REQUISITOS PREVIOS
+- .NET SDK instalado (verificar con: dotnet --version)
+- Google Chrome actualizado instalado
+- Conexion a internet para acceder al entorno de prueba de OpenCart
+  y restaurar paquetes NuGet
+
+3. ESTRUCTURA PRINCIPAL DEL REPOSITORIO
+- ExamenAutomationSofka.sln / ExamenAutomationSofka.csproj: Solucion y proyecto
+- Core/: Configuracion y manejo del navegador (BrowserImpl, esperas, etc.)
+- Systems/POM/: Page Objects (ej. AgregarProductosPO, CheckoutPO, AlertasPO, CarritoPO)
+- Tests/Tests/: Clases de prueba (TestBase, CompraTest)
+- Tests/Recursos/: Datos de prueba (datosUsuarios.csv) y configuracion (appsettings.json)
+- conclusiones.txt: Hallazgos y conclusiones del ejercicio
+
+4. PASOS PARA EJECUTAR EL PROYECTO
+Paso 1: Clonar el repositorio publico en tu equipo:
+  git clone <URL_DEL_REPOSITORIO_PUBLICO>
+
+Paso 2: Ingresar a la carpeta del proyecto:
+  cd <CARPETA_DEL_REPOSITORIO>
+
+Paso 3: Restaurar dependencias NuGet:
+  dotnet restore
+
+Paso 4: Compilar la solucion:
+  dotnet build
+
+Paso 5: Ejecutar las pruebas automatizadas con xUnit:
+  dotnet test
+
+5. CONFIGURACION Y DATOS DE PRUEBA
+- La URL y textos de validacion se encuentran en Tests/Recursos/appsettings.json.
+- Los datos de entrada de la prueba (productos y datos del comprador) se
+  encuentran en Tests/Recursos/datosUsuarios.csv.
+
+6. REPORTES / EVIDENCIAS
+- Los resultados de ejecucion se muestran en consola al correr "dotnet test"
+  (o en la carpeta de reportes/resultados incluida en el repositorio, si aplica).
+====================================================================

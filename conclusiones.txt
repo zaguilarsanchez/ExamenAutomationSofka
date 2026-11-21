@@ -1,0 +1,36 @@
+====================================================================
+CONCLUSIONES Y HALLAZGOS DEL EJERCICIO DE AUTOMATIZACION E2E
+====================================================================
+
+1. RESUMEN DEL FLUJO AUTOMATIZADO
+Se automatizó el flujo completo de compra ("Guest Checkout") en OpenCart,
+desde la adición de productos al carrito hasta la confirmación final
+("Your order has been placed!"), estructurando el código bajo Page Object
+Model (POM) y parametrizando datos desde archivo CSV y configuración JSON.
+
+2. HALLAZGOS TECNICOS Y RESOLUCIONES
+- Sincronización y carga asincrona (AJAX): En el checkout de OpenCart,
+  ciertos campos (como el selector de region/departamento al cambiar de pais)
+  y secciones del acordeon se cargan de forma asincrona. Es necesario
+  asegurar tiempos/esperas adecuadas para evitar interactuar con elementos
+  aún no poblados o no visibles.
+- Intercepción de clics y elementos superpuestos: Al interactuar con botones
+  cercanos a carruseles o banners (como swiper/paginacion), pueden ocurrir
+  intercepciones de clic. Hacer scroll hacia el elemento y contar con
+  respaldo de ejecución JavaScript mejora la estabilidad de la interacción.
+- Navegación paso a paso en el acordeon de checkout: Avanzar entre etapas
+  requiere respetar el orden de los botones "Continue" de cada sección
+  (datos de invitado, método de envío, método de pago/términos y
+  confirmación de orden).
+- Consistencia de localizadores y configuración: Verificar que el tipo de
+  localizador (XPath vs. CSS) coincida con el método de búsqueda utilizado,
+  y validar que las claves de configuración en appsettings.json coincidan
+  con las rutas leidas en TestBase, evita fallos falsos en aserciones.
+
+3. CONCLUSIONES GENERALES
+- El patron POM facilita el mantenimiento y la lectura del código al separar
+  la lógica de la página de la orquestación de la prueba.
+- Combinar esperas explícitas, manejo de desplazamientos y validaciones
+  claras al final del flujo permite obtener pruebas E2E reproducibles y
+  confiables.
+====================================================================
